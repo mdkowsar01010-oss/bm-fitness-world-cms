@@ -1,0 +1,712 @@
+/* ============================================================
+   css/admin.css
+   The BM Fitness World CMS V2 – Admin Dashboard Styles
+   Premium Black & Gold | Glassmorphism | Fully Responsive
+   ============================================================ */
+
+/* ----- 1. CSS Variables (Gold & Dark palette) ----- */
+:root {
+    --gold: #FFD700;
+    --gold-dark: #C9A800;
+    --gold-glow: rgba(255, 215, 0, 0.25);
+    --gold-glow-strong: rgba(255, 215, 0, 0.45);
+    --black: #0B0B0B;
+    --black-glass: rgba(10, 10, 10, 0.75);
+    --glass-border: rgba(255, 215, 0, 0.12);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --text-primary: #FFFFFF;
+    --text-muted: #B3B3B3;
+    --text-gold: var(--gold);
+    --card-bg: rgba(20, 20, 20, 0.60);
+    --card-border: rgba(255, 215, 0, 0.15);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --sidebar-width: 260px;
+    --header-height: 72px;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ----- 2. Reset & Base ----- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--black);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at 20% 30%, #1a1a1a, #000000);
+    overflow-x: hidden;
+}
+
+/* ----- 3. Layout Container ----- */
+#admin-app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ----- 4. Sticky Header (Glass) ----- */
+.admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--black-glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.admin-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-header__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-header__toggle {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    transition: color 0.25s ease, transform 0.2s ease;
+    line-height: 1;
+}
+
+.admin-header__toggle:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.admin-header__toggle:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.admin-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+}
+
+.admin-header__logo {
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+    .admin-header__logo:hover {
+        transform: rotate(5deg) scale(1.05);
+    }
+}
+
+.admin-header__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.admin-header__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-header__greeting {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.admin-header__avatar {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.admin-header__avatar:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.admin-header__avatar:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+/* ----- 5. Sidebar + Main Layout (flex) ----- */
+.admin-layout {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+/* ----- 6. Collapsible Sidebar (Glass) ----- */
+.admin-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    align-self: flex-start;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    background: var(--black-glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-right: 1px solid var(--glass-border);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.35s ease;
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+/* Scrollbar for sidebar */
+.admin-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+.admin-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+.admin-sidebar__nav {
+    padding: 1.5rem 0.75rem;
+}
+
+.admin-sidebar__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.admin-sidebar__item {
+    width: 100%;
+}
+
+.admin-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.admin-sidebar__link i {
+    width: 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+}
+
+.admin-sidebar__link:hover {
+    background: rgba(255, 215, 0, 0.06);
+    color: #fff;
+}
+
+.admin-sidebar__link:hover i {
+    color: var(--gold);
+}
+
+.admin-sidebar__link--active {
+    background: rgba(255, 215, 0, 0.10);
+    color: var(--gold);
+    box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.admin-sidebar__link--active i {
+    color: var(--gold);
+}
+
+.admin-sidebar__link--active::after {
+    content: '';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold-glow);
+}
+
+.admin-sidebar__link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+    border-radius: 0.75rem;
+}
+
+/* Divider before logout */
+.admin-sidebar__item--separator {
+    margin: 0.5rem 0;
+}
+
+.admin-sidebar__divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+    margin: 0.5rem 1rem;
+}
+
+.admin-sidebar__link--logout {
+    color: #FF6B6B;
+}
+
+.admin-sidebar__link--logout i {
+    color: #FF6B6B;
+}
+
+.admin-sidebar__link--logout:hover {
+    background: rgba(255, 107, 107, 0.10);
+    color: #FF6B6B;
+}
+
+/* ----- 7. Collapsed Sidebar State (applied to body) ----- */
+body.sidebar-collapsed .admin-main{
+    margin-left:0;
+}
+ {
+    transform: translateX(-100%);
+    width: 0;
+    overflow: hidden;
+}
+
+/* For desktop, we can also have a mini version, but we'll keep it simple: slide out. */
+/* We'll also handle overlay for mobile later. */
+
+/* ----- 8. Main Content Area ----- */
+.admin-main {
+    flex: 1;
+    padding: 2rem 2rem 1.5rem;
+    background: transparent;
+    min-height: calc(100vh - var(--header-height));
+    transition: margin-left 0.35s ease;
+}
+
+/* Page header */
+.admin-main__header {
+    margin-bottom: 2rem;
+}
+
+.admin-main__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.10);
+}
+
+.admin-main__subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+
+/* ----- 9. Dashboard Cards Grid ----- */
+.admin-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ----- 10. Individual Card (Glassmorphism) ----- */
+.admin-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid var(--card-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+@media (hover:hover){
+	
+.admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.25);
+}
+}
+
+.admin-card:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.admin-card__icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.admin-card:hover .admin-card__icon {
+    transform: scale(1.05);
+}
+
+.admin-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-card__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.5px;
+}
+
+.admin-card__desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.admin-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: gap 0.25s ease, color 0.25s ease;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.admin-card__link i {
+    transition: transform 0.25s ease;
+}
+
+.admin-card__link:hover {
+    color: #fff;
+    gap: 0.75rem;
+}
+
+.admin-card__link:hover i {
+    transform: translateX(4px);
+}
+
+.admin-card__link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+
+/* Logout card (button instead of link) */
+.admin-card--logout .admin-card__btn {
+    background: linear-gradient(135deg, #FF6B6B, #CC4444);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.25);
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.admin-card--logout .admin-card__btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.45);
+    background: linear-gradient(135deg, #FF7A7A, #D64A4A);
+}
+
+.admin-card--logout .admin-card__btn:active {
+    transform: scale(0.98);
+}
+
+.admin-card--logout .admin-card__btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ----- 11. Footer (sticky bottom) ----- */
+.admin-footer {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    background: var(--black-glass);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    margin-top: auto;
+}
+
+/* ----- 12. Responsive Design (Mobile First) ----- */
+
+/* Default: mobile (sidebar hidden, overlay) */
+body .admin-sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    height: calc(100vh - var(--header-height));
+    transform: translateX(-100%);
+    width: var(--sidebar-width);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-right: none;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.7);
+    z-index: 60;
+}
+
+/* Sidebar open state (via body class) */
+body.sidebar-open .admin-sidebar {
+    transform: translateX(0);
+}
+
+/* Overlay (optional) – we add via pseudo or extra div? But we'll use body::before for overlay */
+body.sidebar-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 55;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Tablet and up (≥ 768px) – show sidebar always (non-collapsed) */
+@media (min-width: 768px) {
+    body .admin-sidebar {
+        position: sticky;
+        transform: translateX(0) !important;
+        width: var(--sidebar-width);
+        border-right: 1px solid var(--glass-border);
+        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+        z-index: 50;
+        height: calc(100vh - var(--header-height));
+        top: var(--header-height);
+    }
+
+    body.sidebar-collapsed .admin-sidebar {
+        transform: translateX(-100%);
+        width: 0;
+        overflow: hidden;
+        border-right: none;
+        box-shadow: none;
+    }
+
+    /* Remove overlay on tablet+ */
+    body.sidebar-open::before {
+        display: none;
+    }
+
+    .admin-main {
+        padding: 2rem 2.5rem 1.5rem;
+    }
+}
+
+/* Adjust grid for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .admin-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+    .admin-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large desktop (≥ 1400px) */
+@media (min-width: 1400px) {
+    .admin-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ----- 13. Small Mobile (≤ 480px) ----- */
+@media (max-width: 480px) {
+    .admin-header {
+        padding: 0 0.8rem;
+        height: 60px;
+    }
+
+    .admin-header__title {
+        font-size: 1rem;
+    }
+
+    .admin-header__greeting {
+        display: none;
+    }
+
+    .admin-header__avatar {
+        font-size: 1.6rem;
+    }
+
+    .admin-sidebar {
+        width: 220px;
+    }
+
+    .admin-main {
+        padding: 1rem 0.8rem 1rem;
+    }
+
+    .admin-main__title {
+        font-size: 1.5rem;
+    }
+
+    .admin-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .admin-card {
+        min-height: 140px;
+        padding: 1.2rem 1rem;
+    }
+
+    .admin-card__title {
+        font-size: 1.1rem;
+    }
+
+    .admin-footer {
+        font-size: 0.7rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Extra small (≤ 360px) */
+@media (max-width: 360px) {
+    .admin-header__title {
+        font-size: 0.85rem;
+    }
+
+    .admin-header__logo {
+        width: 32px;
+        height: 32px;
+        transition: .3s ease;
+    }
+
+    .admin-sidebar {
+        width: 200px;
+    }
+
+    .admin-sidebar__link {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .admin-card {
+        padding: 1rem 0.8rem;
+    }
+}
+
+/* ----- 14. Accessibility & Reduced Motion ----- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .admin-card:hover {
+        transform: none !important;
+    }
+
+    .admin-sidebar {
+        transition: none !important;
+    }
+}
+
+/* Focus-visible for all interactive elements */
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* ----- 15. Custom Selection ----- */
+::selection {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* ----- 16. Scrollbar for main (optional) ----- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-dark);
+}

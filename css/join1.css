@@ -1,0 +1,448 @@
+/* ============================================================
+   JOIN1.CSS — The BM Fitness World
+   Premium Black + Gold | Luxury Gym | Join Page Specific Styles
+   ============================================================ */
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+   *,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    overflow-x:hidden;
+}
+
+img,
+iframe,
+video,
+svg{
+    max-width:100%;
+    display:block;
+}
+   
+.join-hero {
+    position: relative;
+    min-height: 80vh;
+    min-height: 80dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 20px;
+    background: var(--bg, #090909);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.join-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(9, 9, 9, 0.2) 0%, rgba(9, 9, 9, 0.85) 100%),
+        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&h=900&fit=crop&crop=center') center/cover no-repeat;
+    z-index: 0;
+}
+
+.join-hero .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.join-hero .hero-title {
+    font-size: clamp(2rem, 6vw, 3.6rem);
+}
+
+.join-hero .hero-desc {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-hero .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--gray, #bdbdbd);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    animation: bounceDown 2.5s infinite;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+@keyframes bounceDown {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+.contact-section {
+    padding: 4rem 0 5rem;
+    background: var(--bg-secondary, #0f0f0f);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 576px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .contact-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.75rem;
+    }
+}
+
+.contact-card {
+    background: rgba(18, 18, 18, 0.75);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 2rem 1.5rem 1.75rem;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    will-change: transform;
+    border-color: rgba(212, 175, 55, 0.08);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.02);
+}
+
+.contact-card:focus-within {
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--gold, #D4AF37);
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.contact-card h3 {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.25rem;
+}
+
+.contact-detail {
+    font-size: 0.85rem;
+    color: var(--gray, #bdbdbd);
+    margin: 0 0 1rem;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.contact-card .btn {
+    margin-top: auto;
+    width: 100%;
+    min-width: 0;
+    justify-content:center;
+}
+
+/* ============================================================
+   MAP SECTION
+   ============================================================ */
+.map-section {
+    padding: 4rem 0 5rem;
+    background: var(--bg, #090909);
+}
+
+.map-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: #121212;
+    max-width: 100%;
+    aspect-ratio:16/9;
+}
+
+.map-wrapper iframe{
+    display:block;
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+@media (min-width: 576px) {
+    .map-wrapper iframe {
+        height: 380px;
+    }
+}
+
+@media (min-width: 992px) {
+    .map-wrapper iframe {
+        height: 450px;
+    }
+}
+
+/* ============================================================
+   WHY JOIN SECTION
+   ============================================================ */
+.why-join-section {
+    padding: 4rem 0 5rem;
+    background: var(--bg-secondary, #0f0f0f);
+}
+
+.why-join-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 576px) {
+    .why-join-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .why-join-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.75rem;
+    }
+}
+
+.why-join-card {
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(8px) saturate(1.1);
+    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-join-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.06);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.why-join-card:focus-within {
+    border-color: rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.05);
+}
+
+.why-join-icon {
+    font-size: 2.5rem;
+    color: var(--gold, #D4AF37);
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+}
+
+.why-join-card h3 {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #fff;
+}
+
+.why-join-card p {
+    font-size: 0.85rem;
+    color: var(--gray, #bdbdbd);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================================
+   CTA SECTION OVERRIDES
+   ============================================================ */
+.cta-section .section-tag {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.08);
+}
+
+.cta-section .section-desc {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================================
+   RESPONSIVE FINE-TUNING
+   ============================================================ */
+
+/* 320px - 359px */
+@media (max-width: 359px) {
+    .contact-card {
+        padding: 1.5rem 1rem 1.25rem;
+    }
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+    }
+    .why-join-card {
+        padding: 1.5rem 1rem;
+    }
+    .map-wrapper iframe {
+        height: 220px;
+    }
+    .join-hero {
+        min-height: 70vh;
+        min-height: 70dvh;
+        padding: 3rem 16px;
+    }
+}
+
+/* 360px - 479px */
+@media (min-width: 360px) and (max-width: 479px) {
+    .map-wrapper iframe {
+        height: 240px;
+    }
+    .contact-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+    }
+}
+
+/* 480px - 575px */
+@media (min-width: 480px) and (max-width: 575px) {
+    .map-wrapper iframe {
+        height: 280px;
+    }
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .why-join-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 576px - 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .map-wrapper iframe {
+        height: 320px;
+    }
+}
+
+/* 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .why-join-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .map-wrapper iframe {
+        height: 360px;
+    }
+}
+
+/* 992px - 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .map-wrapper iframe {
+        height: 400px;
+    }
+}
+
+/* 1200px+ */
+@media (min-width: 1200px) {
+    .map-wrapper iframe {
+        height: 480px;
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION PREFERENCE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .contact-card:hover,
+    .why-join-card:hover {
+        transform: none !important;
+    }
+    .join-hero .hero-scroll {
+        animation: none !important;
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY — FOCUS VISIBLE
+   ============================================================ */
+.contact-card:focus-within,
+.why-join-card:focus-within {
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE
+   ============================================================ */
+@media (prefers-contrast: high) {
+    .contact-card,
+    .why-join-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(0, 0, 0, 0.85);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+    .contact-icon {
+        border-color: var(--gold, #D4AF37);
+    }
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}

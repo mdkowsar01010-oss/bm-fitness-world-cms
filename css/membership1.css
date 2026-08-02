@@ -1,0 +1,564 @@
+/* ============================================================
+   MEMBERSHIP1.CSS — The BM Fitness World
+   Premium Membership Page Styles | Black + Gold Theme
+   Page-specific styles only — does NOT override style.css
+   ============================================================ */
+
+/* ============================================================
+   MEMBERSHIP HERO
+   ============================================================ */
+.membership-hero {
+    position: relative;
+    min-height: 80vh;
+    min-height: 80dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 20px;
+    background: var(--bg, #090909);
+    overflow: hidden;
+}
+
+.membership-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        linear-gradient(180deg, rgba(9, 9, 9, 0.2) 0%, rgba(9, 9, 9, 0.85) 100%),
+        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&h=900&fit=crop&crop=center') center/cover no-repeat;
+}
+
+.membership-hero .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.membership-hero .hero-subtitle {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold, #D4AF37);
+    margin-bottom: 0.5rem;
+}
+
+.membership-hero .hero-title {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.membership-hero .hero-title .gold-text {
+    font-weight: 900;
+}
+
+.membership-hero .hero-desc {
+    font-family: var(--font-primary, 'Poppins', sans-serif);
+    font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+    color: var(--text-muted, #bdbdbd);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+
+.membership-hero .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.membership-hero .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-muted, #bdbdbd);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    animation: bounceDown 2.5s infinite;
+}
+
+.membership-hero .hero-scroll i {
+    font-size: 0.9rem;
+}
+
+@keyframes bounceDown {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
+/* ============================================================
+   PLANS SECTION
+   ============================================================ */
+.plans-section {
+    padding: 4rem 0 5rem;
+    background: var(--bg-secondary, #0f0f0f);
+}
+
+/* ============================================================
+   PLANS GRID
+   ============================================================ */
+.plans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 576px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .plans-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .plans-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* ============================================================
+   PLAN CARD
+   ============================================================ */
+.plan-card {
+    background: var(--bg-card, rgba(18, 18, 18, 0.82));
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.06));
+    border-radius: var(--radius, 20px);
+    padding: 2rem 1.5rem 1.75rem;
+    text-align: center;
+    transition: all var(--transition, 0.25s ease);
+    box-shadow: var(--shadow-glass, 0 8px 32px rgba(0, 0, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.plan-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-glass-hover, rgba(212, 175, 55, 0.12));
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.02);
+}
+
+.plan-card:focus-within {
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+}
+
+/* Popular Plan */
+.plan-card.popular {
+    border-color: rgba(212, 175, 55, 0.15);
+    background: rgba(212, 175, 55, 0.02);
+}
+
+.plan-card.popular .plan-badge {
+    background: var(--gold, #D4AF37);
+    color: var(--bg, #090909);
+}
+
+.plan-card.popular .plan-popular-badge {
+    display: inline-flex;
+}
+
+/* Plan Badge */
+.plan-badge {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 1.2rem;
+    border-radius: 40px;
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--gold, #D4AF37);
+    border: 1px solid rgba(212, 175, 55, 0.06);
+}
+
+/* Popular Badge */
+.plan-popular-badge {
+    display: none;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--gold, #D4AF37);
+    background: rgba(212, 175, 55, 0.08);
+    padding: 0.2rem 0.8rem;
+    border-radius: 40px;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.1rem;
+}
+
+.plan-popular-badge i {
+    font-size: 0.6rem;
+}
+
+/* Plan Price */
+.plan-price {
+    font-family: var(--font-secondary, 'Montserrat', sans-serif);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--gold, #D4AF37);
+    margin: 0.1rem 0 0;
+}
+
+.plan-price::before {
+    content: '$';
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+/* Plan Duration */
+.plan-duration {
+    font-size: 0.8rem;
+    color: var(--text-muted, #bdbdbd);
+    margin: -0.2rem 0 0.2rem;
+}
+
+/* Plan Features */
+.plan-features {
+    width: 100%;
+    text-align: left;
+    margin: 0.5rem 0 1rem;
+    padding: 0;
+    flex: 1;
+}
+
+.plan-features li {
+    font-size: 0.85rem;
+    color: var(--text-muted, #bdbdbd);
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plan-features .gold-text {
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+/* Plan Image (for future Firebase support) */
+.plan-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius-sm, 12px);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.plan-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Plan Card Button */
+.plan-card .btn {
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+/* ============================================================
+   SKELETON LOADING (for Firebase dynamic content)
+   ============================================================ */
+.plan-card.skeleton {
+    background: rgba(18, 18, 18, 0.4);
+    backdrop-filter: blur(8px);
+    border-color: rgba(255, 255, 255, 0.02);
+    padding: 2rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+
+.plan-card.skeleton .skeleton-badge {
+    height: 1.8rem;
+    width: 40%;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 40px;
+    animation: shimmer 1.8s infinite;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 25%,
+            rgba(255, 255, 255, 0.06) 50%,
+            rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+}
+
+.plan-card.skeleton .skeleton-price {
+    height: 2.8rem;
+    width: 35%;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    animation: shimmer 1.8s infinite;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 25%,
+            rgba(255, 255, 255, 0.06) 50%,
+            rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+}
+
+.plan-card.skeleton .skeleton-duration {
+    height: 0.8rem;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    animation: shimmer 1.8s infinite;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 25%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+}
+
+.plan-card.skeleton .skeleton-features {
+    width: 100%;
+    height: 4.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    animation: shimmer 1.8s infinite;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 25%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+}
+
+.plan-card.skeleton .skeleton-btn {
+    height: 2.8rem;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 60px;
+    animation: shimmer 1.8s infinite;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 25%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.plans-grid .empty-state {
+    grid-column: 1 / -1;
+}
+
+/* ============================================================
+   RESPONSIVE FINE-TUNING
+   ============================================================ */
+
+/* 320px - 359px */
+@media (max-width: 359px) {
+    .membership-hero {
+        min-height: 70vh;
+        min-height: 70dvh;
+        padding: 3rem 16px;
+    }
+    .membership-hero .hero-title {
+        font-size: 2rem;
+    }
+    .plan-card {
+        padding: 1.5rem 1rem 1.25rem;
+    }
+    .plan-price {
+        font-size: 2rem;
+    }
+}
+
+/* 360px - 479px */
+@media (min-width: 360px) and (max-width: 479px) {
+    .membership-hero .hero-title {
+        font-size: 2.2rem;
+    }
+    .plan-card {
+        padding: 1.75rem 1.1rem 1.5rem;
+    }
+}
+
+/* 480px - 575px */
+@media (min-width: 480px) and (max-width: 575px) {
+    .membership-hero .hero-title {
+        font-size: 2.6rem;
+    }
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+/* 576px - 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .membership-hero .hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .membership-hero .hero-title {
+        font-size: 3.6rem;
+    }
+}
+
+/* 992px - 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .membership-hero .hero-title {
+        font-size: 4rem;
+    }
+}
+
+/* 1200px - 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .membership-hero .hero-title {
+        font-size: 4.2rem;
+    }
+}
+
+/* 1400px+ */
+@media (min-width: 1400px) {
+    .membership-hero .hero-title {
+        font-size: 4.8rem;
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION PREFERENCE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .plan-card:hover {
+        transform: none !important;
+    }
+    .membership-hero .hero-scroll {
+        animation: none !important;
+    }
+    .plan-card.skeleton .skeleton-badge,
+    .plan-card.skeleton .skeleton-price,
+    .plan-card.skeleton .skeleton-duration,
+    .plan-card.skeleton .skeleton-features,
+    .plan-card.skeleton .skeleton-btn {
+        animation: none !important;
+        background: rgba(255, 255, 255, 0.02);
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY — FOCUS VISIBLE
+   ============================================================ */
+.plan-card:focus-within {
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE
+   ============================================================ */
+@media (prefers-contrast: high) {
+    .plan-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(0, 0, 0, 0.85);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+    .plan-card.popular {
+        background: rgba(0, 0, 0, 0.9);
+        border-color: var(--gold, #D4AF37);
+    }
+    .plan-card.popular .plan-badge {
+        background: var(--gold, #D4AF37);
+        color: #000;
+    }
+    .plan-card.skeleton .skeleton-badge,
+    .plan-card.skeleton .skeleton-price,
+    .plan-card.skeleton .skeleton-duration,
+    .plan-card.skeleton .skeleton-features,
+    .plan-card.skeleton .skeleton-btn {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    
+    
+    
+    
+    
+    .plan-price-table{
+    margin:20px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+}
+
+.price-row:not(:last-child){
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.price-label{
+    color:#ddd;
+    font-weight:500;
+}
+
+.price-value{
+    font-size:1.05rem;
+    font-weight:700;
+}
+
+}

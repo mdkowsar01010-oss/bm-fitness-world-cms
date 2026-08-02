@@ -1,0 +1,577 @@
+/* ============================================================
+   css/login.css
+   The BM Fitness World CMS V2 – Login Page Styles
+   Black & Gold Premium Gym Theme | Glassmorphism | Responsive
+   ============================================================ */
+
+/* ----- 1. CSS Variables (Gold & Dark palette) ----- */
+:root {
+    --gold: #FFD700;
+    --gold-dark: #C9A800;
+    --gold-glow: rgba(255, 215, 0, 0.25);
+    --gold-glow-strong: rgba(255, 215, 0, 0.45);
+    --black: #0B0B0B;
+    --black-card: rgba(10, 10, 10, 0.65);
+    --glass-border: rgba(255, 215, 0, 0.20);
+    --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    --text-primary: #FFFFFF;
+    --text-muted: #B3B3B3;
+    --text-gold: var(--gold);
+    --input-bg: rgba(255, 255, 255, 0.06);
+    --input-border: rgba(255, 215, 0, 0.25);
+    --input-focus: var(--gold);
+    --error: #FF4D4D;
+    --success: #00E676;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-smooth: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ----- 2. Reset & Base ----- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    background: var(--black);
+    color: var(--text-primary);
+    padding: 1rem;
+    margin: 0;
+    /* fallback gradient – animated layers will overlay */
+    background: radial-gradient(circle at 20% 30%, #1a1a1a, #000000);
+    overflow: hidden;
+}
+
+/* ----- 3. Animated Background Layers (Gold Glow + Floating Circles) ----- */
+#login-page {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none; /* allows clicks through to card */
+}
+
+.bg-layer {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.45;
+    will-change: transform, opacity;
+    animation: floatGlow 18s infinite alternate ease-in-out;
+}
+
+/* Layer 1 – large gold glow */
+.bg-layer--1 {
+    width: 50vw;
+    height: 50vw;
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    animation-duration: 22s;
+    animation-delay: 0s;
+}
+
+/* Layer 2 – smaller, brighter gold */
+.bg-layer--2 {
+    width: 30vw;
+    height: 30vw;
+    bottom: -5%;
+    right: -5%;
+    background: radial-gradient(circle, var(--gold-glow-strong), transparent 70%);
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+
+/* Layer 3 – floating blur circle (white/gold) */
+.bg-layer--3 {
+    width: 25vw;
+    height: 25vw;
+    top: 40%;
+    left: 60%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.20), transparent 70%);
+    animation-duration: 26s;
+    animation-delay: 1s;
+}
+
+/* Layer 4 – additional depth */
+.bg-layer--4 {
+    width: 20vw;
+    height: 20vw;
+    bottom: 20%;
+    left: 10%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.15), transparent 70%);
+    animation-duration: 24s;
+    animation-delay: 5s;
+}
+
+@keyframes floatGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.35;
+    }
+    33% {
+        transform: translate(30px, -40px) scale(1.1);
+        opacity: 0.55;
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+        opacity: 0.40;
+    }
+    100% {
+        transform: translate(40px, 30px) scale(1.05);
+        opacity: 0.50;
+    }
+}
+
+/* ----- 4. Glassmorphism Login Card ----- */
+.login-card {
+    position: relative;
+    z-index: 10;
+    max-width: 440px;
+    width: 100%;
+    padding: 2.5rem 2rem 2rem;
+    background: var(--black-card);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 2rem;
+    box-shadow: var(--glass-shadow), 0 0 40px rgba(255, 215, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+    text-align: center;
+    pointer-events: auto;
+}
+
+@media (hover: hover) {
+    .login-card:hover {
+        box-shadow: var(--glass-shadow), 0 0 60px rgba(255, 215, 0, 0.15);
+    }
+}
+
+/* ----- 5. Logo ----- */
+.login-card__logo {
+    margin-bottom: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card__logo-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+    transition: box-shadow 0.4s ease;
+    transform:scale(1);
+}
+
+.login-card__logo-img:hover {
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.45);
+    transform:scale(1.05);
+}
+
+/* ----- 6. Titles ----- */
+.login-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+    margin-bottom: 0.15rem;
+}
+
+.login-card__subtitle {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+    padding-bottom: 0.75rem;
+}
+
+/* ----- 7. Form Elements ----- */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    transition: color 0.3s ease;
+}
+
+.form-label i {
+    margin-right: 0.5rem;
+    color: var(--gold);
+    width: 1.2rem;
+}
+
+/* Inputs */
+.form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 1rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    backdrop-filter: blur(4px);
+    min-height:52px;
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+}
+
+.form-input:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.15), 0 0 20px rgba(255, 215, 0, 0.05);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Password wrapper */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.form-input--password {
+    padding-right: 3.2rem;
+}
+
+/* ----- 8. Password Toggle Button ----- */
+.password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.2s ease;
+    border-radius: 0.5rem;
+    line-height: 1;
+}
+
+.password-toggle:hover {
+    color: var(--gold);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.password-toggle i {
+    pointer-events: none;
+}
+
+/* ----- 9. Login Button (with spinner) ----- */
+.login-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0B0B0B;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.25);
+    overflow: hidden;
+    min-height:54px;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 35px rgba(255, 215, 0, 0.45);
+    background: linear-gradient(135deg, #FFE033, #D4AF00);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.login-btn:focus-visible{
+
+outline:2px solid var(--gold);
+
+outline-offset:3px;
+
+}
+
+/* Spinner inside button */
+.login-spinner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #0B0B0B;
+}
+
+.login-spinner i {
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ----- 10. Messages (error / success) ----- */
+.login-message {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.25rem;
+}
+
+.login-message--error {
+    background: rgba(255, 77, 77, 0.12);
+    color: var(--error);
+    border-left: 4px solid var(--error);
+}
+
+.login-message--success {
+    background: rgba(0, 230, 118, 0.10);
+    color: var(--success);
+    border-left: 4px solid var(--success);
+}
+
+.login-message[hidden] {
+    display: none;
+}
+
+/* ----- 11. Footer ----- */
+.login-card__footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.10);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.login-card__footer i {
+    color: var(--gold);
+    margin-right: 0.4rem;
+}
+
+/* ----- 12. Responsive Design ----- */
+
+/* Tablets & small desktops (≤ 768px) */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 2rem 1.5rem 1.8rem;
+        max-width: 400px;
+    }
+
+    .login-card__title {
+        font-size: 1.8rem;
+    }
+
+    .login-card__logo-img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .form-input {
+        padding: 0.75rem 0.9rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile devices (≤ 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 0.75rem;
+    }
+
+    .login-card {
+        padding: 1.5rem 1.2rem 1.5rem;
+        border-radius: 1.5rem;
+        max-width: 100%;
+    }
+
+    .login-card__title {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    .login-card__subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .login-card__logo-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .form-label {
+        font-size: 0.75rem;
+    }
+
+    .form-input {
+        padding: 0.65rem 0.8rem;
+        font-size: 0.85rem;
+        border-radius: 0.8rem;
+    }
+
+    .login-btn {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .password-toggle {
+        font-size: 1rem;
+        right: 0.5rem;
+    }
+
+    .login-card__footer {
+        font-size: 0.65rem;
+    }
+
+    .login-message {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Small mobile (≤ 360px) */
+@media (max-width: 360px) {
+    .login-card {
+        padding: 1.2rem 0.9rem 1.2rem;
+    }
+
+    .login-card__title {
+        font-size: 1.25rem;
+    }
+
+    .login-card__logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .form-input {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .login-btn {
+        font-size: 0.9rem;
+        padding: 0.65rem 0.8rem;
+    }
+
+    .password-toggle {
+        font-size: 0.85rem;
+    }
+}
+
+/* ----- 13. Accessibility & Reduced Motion ----- */
+@media (prefers-reduced-motion: reduce) {
+    .bg-layer,
+    .bg-layer--1,
+    .bg-layer--2,
+    .bg-layer--3,
+    .bg-layer--4 {
+        animation: none;
+        opacity: 0.3;
+    }
+
+    .login-spinner i {
+        animation: none;
+    }
+
+    .login-btn,
+    .login-card,
+    .login-card__logo-img,
+    .password-toggle {
+        transition: none;
+    }
+}
+
+::selection{
+
+background:var(--gold);
+
+color:#000;
+
+}
+
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:var(--gold);
+
+border-radius:10px;
+
+}
