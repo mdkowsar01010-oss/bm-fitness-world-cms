@@ -751,14 +751,10 @@ async function handleConfirmDelete() {
         console.error('Delete Error:', error);
         showToast('Failed to delete media.', 'error');
     } finally {
-        currentDeleteId = null;
-        currentDeletePublicId = null;
-        currentDeleteResourceType = null;
-
         DOM.btnConfirmDelete.disabled = false;
         DOM.btnConfirmDelete.innerHTML = '<i class="fas fa-trash"></i> Confirm Delete';
     }
-}
+            }
 
 // ==========================================
 // PREVIEW (LIGHTBOX) LOGIC
