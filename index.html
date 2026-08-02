@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The BM Fitness World — Premium Luxury Gym</title>
+    <meta name="description" content="Experience premium fitness at The BM Fitness World. State-of-the-art equipment, expert trainers, and luxury amenities." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="main-header" role="banner" aria-label="Site header">
+        <div class="header-container">
+            <a href="index.html" class="brand-link" aria-label="The BM Fitness World home">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="slideMenu">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    THREE-DOT SLIDE MENU
+    ============================================================ -->
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    <nav class="slide-menu" id="slideMenu" role="navigation" aria-label="Main navigation" aria-hidden="true">
+        <div class="slide-menu-inner">
+            <button class="menu-close" id="menuClose" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="menu-brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </div>
+            <ul class="menu-nav">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="membership1.html">Membership</a></li>
+                <li><a href="trainer1.html">Trainer</a></li>
+                <li><a href="join1.html">Join Now</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+            </ul>
+            <div class="menu-social">
+                <a href="https://www.facebook.com/thebmfitnessworld" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/8801864858208" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-label="Hero banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle fade-up">PREMIUM FITNESS</p>
+            <h1 class="hero-title fade-up">Elevate Your Fitness Journey</h1>
+            <p class="hero-desc fade-up">Experience world-class facilities, expert trainers, and a luxury community dedicated to your transformation.</p>
+            <div class="hero-buttons fade-up">
+                <a href="join1.html" class="btn btn-gold">Join Now <i class="fas fa-arrow-right"></i></a>
+                <a href="membership1.html" class="btn btn-outline">View Membership <i class="fas fa-crown"></i></a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section class="about" id="about" aria-labelledby="about-title">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content fade-up">
+                    <span class="section-tag">ABOUT US</span>
+                    <h2 id="about-title" class="section-title">Where Excellence <span class="gold-text">Meets</span> Fitness</h2>
+                    <p class="section-desc">The BM Fitness World is a premium luxury gym dedicated to helping you achieve your peak physical potential. With state-of-the-art equipment, personalized training, and a community that inspires.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="6">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-label">Happy Members</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Expert Trainers</span>
+                        </div>
+                    </div>
+                    <a href="join1.html" class="btn btn-gold about-btn">Get Admission <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="about-image fade-up">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=700&fit=crop&crop=center" alt="Modern luxury gym interior with premium equipment" width="600" height="700" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ============================================================
+OUR SERVICES
+============================================================ -->
+<section class="services-section" id="services" aria-labelledby="services-title">
+    <div class="container">
+
+        <div class="section-header fade-up">
+            <span class="section-tag">OUR SERVICES</span>
+            <h2 id="services-title" class="section-title">
+                Premium <span class="gold-text">Services</span>
+            </h2>
+            <p class="section-desc">
+                Everything you need to achieve your fitness goals.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Modern Equipment</h3>
+                <p>Latest premium fitness equipment for every workout.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Personal Training</h3>
+                <p>Professional trainers to guide your fitness journey.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+                <h3>Cardio Zone</h3>
+                <p>Dedicated cardio area with modern treadmills and bikes.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Fat Loss Program</h3>
+                <p>Special workout plans designed for healthy fat loss.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Strength Training</h3>
+                <p>Build muscle and increase strength with expert guidance.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Group Classes</h3>
+                <p>Energetic group workouts in a motivating environment.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- ============================================================
+    MEMBERSHIP PREVIEW — Firebase Ready
+    ============================================================ -->
+    <section class="featured-section" id="membership-preview" aria-labelledby="membership-title">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">MEMBERSHIP</span>
+                <h2 id="membership-title" class="section-title">Choose Your <span class="gold-text">Plan</span></h2>
+                <p class="section-desc">Flexible membership options designed to fit your lifestyle.</p>
+            </div>
+            <div class="featured-grid" id="firebase-membership-home">
+                <!-- Dynamically loaded from Firebase -->
+                <!-- Skeleton will be shown by script -->
+            </div>
+            <div class="gallery-cta fade-up">
+                <a href="membership1.html" class="btn btn-outline">View All Plans <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TRAINER PREVIEW — Firebase Ready
+    ============================================================ -->
+    <section class="featured-section trainer-preview" id="trainer-preview" aria-labelledby="trainer-title">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">TRAINERS</span>
+                <h2 id="trainer-title" class="section-title">Meet Our <span class="gold-text">Experts</span></h2>
+                <p class="section-desc">World-class trainers dedicated to your success.</p>
+            </div>
+            <div class="featured-grid" id="firebase-trainer-home">
+                <!-- Dynamically loaded from Firebase -->
+                <!-- Skeleton will be shown by script -->
+            </div>
+            <div class="gallery-cta fade-up">
+                <a href="trainer1.html" class="btn btn-outline">View All Trainers <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    GALLERY — Firebase Ready
+    ============================================================ -->
+    <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">GALLERY</span>
+                <h2 id="gallery-title" class="section-title">Inside <span class="gold-text">Our Space</span></h2>
+                <p class="section-desc">A glimpse into the premium environment that awaits you.</p>
+            </div>
+            <div class="gallery-grid" id="firebase-gallery-home">
+                <!-- Dynamically loaded from Firebase -->
+                <!-- Skeleton will be shown by script -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    REVIEWS — Firebase Ready
+    ============================================================ -->
+    <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">TESTIMONIALS</span>
+                <h2 id="reviews-title" class="section-title">What Our <span class="gold-text">Members Say</span></h2>
+                <p class="section-desc">Real stories from real people who transformed their lives with us.</p>
+            </div>
+            <div class="reviews-slider" id="firebase-review-home">
+                <!-- Dynamically loaded from Firebase -->
+                <!-- Skeleton will be shown by script -->
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- ============================================================
+LEAVE A REVIEW
+============================================================ -->
+<section class="review-form-section" id="write-review" aria-labelledby="write-review-title">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">LEAVE A REVIEW</span>
+            <h2 id="write-review-title" class="section-title">Share Your <span class="gold-text">Feedback</span></h2>
+            <p class="section-desc">We value your opinion. Let us know about your experience at The BM Fitness World.</p>
+        </div>
+
+        <div class="review-form-wrapper fade-up">
+            <form class="review-form" id="review-form" autocomplete="off">
+
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="review-name" class="form-label">Your Name <span class="required">*</span></label>
+                    <input type="text" id="review-name" name="name" class="form-input" placeholder="Enter your full name" required maxlength="100" aria-required="true" />
+                </div>
+
+                <!-- Rating Stars -->
+                <div class="form-group">
+                    <span class="form-label">Rating <span class="required">*</span></span>
+                    <div class="rating-stars" role="radiogroup" aria-label="Rating selection">
+                        <input type="radio" name="rating" id="star5" value="5" class="star-input" required />
+                        <label for="star5" class="star-label" aria-label="5 stars"><i class="fas fa-star"></i></label>
+
+                        <input type="radio" name="rating" id="star4" value="4" class="star-input" />
+                        <label for="star4" class="star-label" aria-label="4 stars"><i class="fas fa-star"></i></label>
+
+                        <input type="radio" name="rating" id="star3" value="3" class="star-input" />
+                        <label for="star3" class="star-label" aria-label="3 stars"><i class="fas fa-star"></i></label>
+
+                        <input type="radio" name="rating" id="star2" value="2" class="star-input" />
+                        <label for="star2" class="star-label" aria-label="2 stars"><i class="fas fa-star"></i></label>
+
+                        <input type="radio" name="rating" id="star1" value="1" class="star-input" />
+                        <label for="star1" class="star-label" aria-label="1 star"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+
+                <!-- Review Textarea -->
+                <div class="form-group">
+                    <label for="review-text" class="form-label">Your Review <span class="required">*</span></label>
+                    <textarea id="review-text" name="review" class="form-textarea" placeholder="Share your experience with our gym..." required maxlength="1000" aria-required="true" rows="5"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-gold btn-submit-review" id="review-submit">
+                    Submit Review <i class="fas fa-paper-plane"></i>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+
+        <div class="section-header fade-up">
+            <span class="section-tag">GET IN TOUCH</span>
+            <h2 id="contact-title" class="section-title">
+                Contact <span class="gold-text">Us</span>
+            </h2>
+            <p class="section-desc">
+                Reach out through any of the channels below — we're here to help.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <!-- Phone -->
+            <div class="contact-card fade-up">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+
+                <h3>Phone</h3>
+
+                <p class="contact-detail">
+                    01916-899443
+                </p>
+
+                <a href="tel:01916899443" class="btn btn-outline btn-sm">
+                    Call Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card fade-up">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <h3>Email</h3>
+
+                <p class="contact-detail">
+                    thebmfitnessworld@gmail.com
+                </p>
+
+                <a href="mailto:thebmfitnessworld@gmail.com" class="btn btn-outline btn-sm">
+                    Send Email
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="contact-card fade-up">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+
+                <h3>WhatsApp</h3>
+
+                <p class="contact-detail">
+                    +8801864858208
+                </p>
+
+                <a href="https://wa.me/8801864858208"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline btn-sm">
+
+                    Chat on WhatsApp
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+            </div>
+
+            <!-- Facebook -->
+            <div class="contact-card fade-up">
+                <div class="contact-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+
+                <h3>Facebook</h3>
+
+                <p class="contact-detail">
+                    The BM Fitness World
+                </p>
+
+                <a href="https://www.facebook.com/thebmfitnessworld"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline btn-sm">
+
+                    Visit Facebook
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
+    <section class="cta-section" aria-labelledby="cta-title">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content fade-up">
+                <span class="section-tag">START YOUR JOURNEY</span>
+                <h2 id="cta-title" class="section-title">Ready to <span class="gold-text">Transform</span> Yourself?</h2>
+                <p class="section-desc">Join The BM Fitness World today and experience the ultimate in premium fitness luxury.</p>
+                <div class="cta-buttons">
+                    <a href="join1.html" class="btn btn-gold">Get Admission <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Contact Us <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-sub">THE BM</span>
+                    <span class="brand-main">FITNESS WORLD</span>
+                    <p>Elevate your fitness journey with premium luxury, expert training, and a community that inspires greatness.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/thebmfitnessworld" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/8801864858208" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership1.html">Membership</a></li>
+                        <li><a href="trainer1.html">Trainers</a></li>
+                        <li><a href="join1.html">Join Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    BOTTOM NAVIGATION
+    ============================================================ -->
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+        <a href="index.html" class="bottom-nav-link active" aria-label="Home">
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="membership1.html" class="bottom-nav-link" aria-label="Membership">
+            <i class="fas fa-id-card"></i>
+            <span>Membership</span>
+        </a>
+        <a href="trainer1.html" class="bottom-nav-link" aria-label="Trainer">
+            <i class="fas fa-dumbbell"></i>
+            <span>Trainer</span>
+            </a>
+        <a href="join1.html" class="bottom-nav-link" aria-label="Join">
+            <i class="fas fa-user-plus"></i>
+            <span>Join</span>
+        </a>
+        <button class="bottom-nav-link menu-trigger" id="bottomMenuTrigger" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+<script type="module" src="js/script.js"></script>
+
+
+<!-- Gallery Popup -->
+<div id="galleryPopup" class="gallery-popup">
+    <div class="gallery-popup-content">
+        <button id="galleryClose" class="gallery-close" aria-label="Close popup">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <img id="popupImage" src="" alt="Gallery image">
+        
+        <video
+            id="popupVideo"
+            controls
+            playsinline
+            preload="metadata"
+            style="display:none;width:100%;border-radius:12px;">
+        </video>
+
+        <div class="gallery-popup-info">
+            <h3 id="popupTitle"></h3>
+            <p id="popupDescription"></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+        
+        

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membership Plans | The BM Fitness World</title>
+    <meta name="description" content="Explore premium membership plans at The BM Fitness World. Choose the perfect plan for your fitness journey." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/membership1.css" />
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="main-header" role="banner" aria-label="Site header">
+        <div class="header-container">
+            <a href="index.html" class="brand-link" aria-label="The BM Fitness World home">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="slideMenu">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    THREE-DOT SLIDE MENU
+    ============================================================ -->
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    <nav class="slide-menu" id="slideMenu" role="navigation" aria-label="Main navigation" aria-hidden="true">
+        <div class="slide-menu-inner">
+            <button class="menu-close" id="menuClose" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="menu-brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </div>
+            <ul class="menu-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="membership1.html" class="active">Membership</a></li>
+                <li><a href="trainer1.html">Trainer</a></li>
+                <li><a href="join1.html">Join Now</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+            </ul>
+            <div class="menu-social">
+                        <a href="https://www.facebook.com/thebmfitnessworld"
+   aria-label="Facebook"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="mailto:thebmfitnessworld@gmail.com"
+   aria-label="Email">
+    <i class="fas fa-envelope"></i>
+</a>
+
+<a href="https://wa.me/8801864858208"
+   aria-label="WhatsApp"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="membership-hero" aria-label="Membership hero banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle fade-up">PREMIUM MEMBERSHIP</span>
+            <h1 class="hero-title fade-up">Choose Your <span class="gold-text">Plan</span></h1>
+            <p class="hero-desc fade-up">
+Choose the perfect membership plan for your fitness goals.
+</p>
+            <div class="hero-buttons fade-up">
+                <a href="join1.html" class="btn btn-gold">Join Now <i class="fas fa-arrow-right"></i></a>
+                <a href="#plans" class="btn btn-outline">View Plans <i class="fas fa-chevron-down"></i></a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    
+    <!-- ============================================================
+    MEMBERSHIP PLANS
+    ============================================================ -->
+    
+<section class="plans-section" id="plans" aria-labelledby="plans-title">
+    <div class="container">
+
+        <div class="section-header fade-up">
+            <span class="section-tag">MEMBERSHIP PLANS</span>
+            <h2 id="plans-title" class="section-title">
+                Choose Your <span class="gold-text">Membership</span>
+            </h2>
+            <p class="section-desc">
+                Find the perfect membership plan for your fitness journey.
+            </p>
+        </div>
+        
+
+        <div class="plans-grid" id="firebase-membership-container">
+            <!-- Membership Plans Load From Firebase -->
+        </div>
+
+    </div>
+</section>
+
+  
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
+    <section class="cta-section" aria-labelledby="cta-title">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content fade-up">
+                <span class="section-tag">START YOUR JOURNEY</span>
+                <h2 id="cta-title" class="section-title">Ready to <span class="gold-text">Transform</span> Yourself?</h2>
+                <p class="section-desc">Join The BM Fitness World today and experience the ultimate in premium fitness luxury.</p>
+                <div class="cta-buttons">
+                    <a href="join1.html" class="btn btn-gold">Join Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="index.html#contact" class="btn btn-outline">Contact Us <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-sub">THE BM</span>
+                    <span class="brand-main">FITNESS WORLD</span>
+                    <p>Elevate your fitness journey with premium luxury, expert training, and a community that inspires greatness.</p>
+                    <div class="footer-social">
+                       <a href="https://www.facebook.com/thebmfitnessworld"
+   aria-label="Facebook"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="mailto:thebmfitnessworld@gmail.com"
+   aria-label="Email">
+    <i class="fas fa-envelope"></i>
+</a>
+
+<a href="https://wa.me/8801864858208"
+   aria-label="WhatsApp"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership1.html">Membership</a></li>
+                        <li><a href="trainer1.html">Trainers</a></li>
+                        <li><a href="join1.html">Join Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    BOTTOM NAVIGATION
+    ============================================================ -->
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+        <a href="index.html" class="bottom-nav-link" aria-label="Home">
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="membership1.html" class="bottom-nav-link active" aria-label="Membership">
+            <i class="fas fa-id-card"></i>
+            <span>Membership</span>
+        </a>
+        <a href="trainer1.html" class="bottom-nav-link" aria-label="Trainer">
+            <i class="fas fa-dumbbell"></i>
+            <span>Trainer</span>
+        </a>
+        <a href="join1.html" class="bottom-nav-link" aria-label="Join">
+            <i class="fas fa-user-plus"></i>
+            <span>Join</span>
+        </a>
+        <button class="bottom-nav-link menu-trigger" id="bottomMenuTrigger" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script type="module" src="js/script.js"></script>
+<script type="module" src="js/membership1.js"></script>
+
+</body>
+</html>

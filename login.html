@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The BM Fitness World CMS V2 – Admin Login</title>
+    <meta name="description" content="Secure admin login panel for The BM Fitness World CMS V2. Access your fitness management dashboard." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon"
+href="assets/icons/favicon.png"
+type="image/png">
+
+<link rel="stylesheet"
+href="css/login.css">
+</head>
+<body>
+
+    <!-- ===== PAGE WRAPPER ===== -->
+    <div id="login-page">
+
+        <!-- ===== ANIMATED BACKGROUND ===== -->
+        <div class="bg-layer bg-layer--1"></div>
+        <div class="bg-layer bg-layer--2"></div>
+        <div class="bg-layer bg-layer--3"></div>
+        <div class="bg-layer bg-layer--4"></div>
+
+        <!-- ===== GLASSMORPHISM LOGIN CARD ===== -->
+        <main class="login-card" role="main" aria-labelledby="login-heading">
+
+            <!-- Logo -->
+            <div class="login-card__logo" aria-hidden="true">
+                <img
+                src="assets/icons/logo.png"
+                alt="The BM Fitness World Logo"
+                width="120"
+                height="120"
+                loading="eager"
+                class="login-card__logo-img"
+                />
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h1 id="login-heading" class="login-card__title">
+                The BM Fitness World
+            </h1>
+            <p class="login-card__subtitle">Admin Login</p>
+
+            <!-- ===== LOGIN FORM ===== -->
+            <form id="login-form" class="login-form" novalidate autocomplete="off">
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="login-email" class="form-label">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        Email Address
+                    </label>
+                    <input
+                    type="email"
+                    id="login-email"
+                    class="form-input"
+                    placeholder="Enter Email"
+                    required
+                    autocomplete="email"
+                    aria-required="true"
+                    />
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="login-password" class="form-label">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        Password
+                    </label>
+                    <div class="password-wrapper">
+                        <input
+                        type="password"
+                        id="login-password"
+                        class="form-input form-input--password"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password"
+                        aria-required="true"
+                        />
+                        <button
+                        type="button"
+                        id="toggle-password"
+                        class="password-toggle"
+                        aria-label="Show or hide password"
+                        aria-pressed="false"
+                        >
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" id="login-btn" class="login-btn">
+                <span class="login-btn__text">Login</span>
+                <!-- Loading spinner (hidden by default) -->
+                <span id="login-spinner" class="login-spinner" aria-hidden="true" hidden>
+                    <i class="fas fa-spinner fa-spin"></i>
+                </span>
+            </button>
+
+            <!-- Message placeholders -->
+            <div id="login-error" class="login-message login-message--error" role="alert" aria-live="polite" hidden></div>
+            <div id="login-success" class="login-message login-message--success" role="status" aria-live="polite" hidden></div>
+
+        </form>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="login-card__footer">
+            <p>
+                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                Secure Admin Access
+            </p>
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- ===== EXTERNAL SCRIPTS ===== -->
+<script type="module" src="js/login.js"></script>
+<script src="js/login.js" type="module"></script>
+
+</body>
+</html>
