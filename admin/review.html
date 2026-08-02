@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Reviews | BM Fitness World CMS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/review.css" />
+    <!-- Main Script Module -->
+    <script type="module" src="../js/review.js" defer></script>
+</head>
+<body class="bg-dark text-light">
+    <!-- ================= HEADER ================= -->
+    <header class="main-header glass-panel">
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD <span class="gold-text">V2</span></span>
+            </div>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="../admin.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="review.html" class="nav-link active" aria-current="page"><i class="fas fa-star"></i> Reviews</a>
+            </nav>
+            <div class="user-profile">
+                <span id="user-display-name" class="user-name">Administrator</span>
+                <a href="../admin.html" class="btn btn-gold-outline btn-sm" aria-label="Back to Dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN WORKSPACE ================= -->
+    <main class="workspace-container">
+        <!-- Breadcrumb & Header Actions -->
+        <section class="section-header">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../admin.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Customer <span class="gold-text">Reviews</span></h1>
+            </div>
+            <!-- No Add button -->
+        </section>
+
+        <!-- ================= SEARCH & FILTER TOOLBAR ================= -->
+        <section class="toolbar-section glass-panel" aria-label="Search and Filter Controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input type="search" id="search-input" placeholder="Search by customer name or review..." aria-label="Search reviews" />
+            </div>
+            <div class="filters-group">
+                <div class="filter-item">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status" class="custom-select">
+                        <option value="all">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="filter-sort">Sort</label>
+                    <select id="filter-sort" class="custom-select">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="highest">Highest Rating</option>
+                        <option value="lowest">Lowest Rating</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LOADING SKELETON ================= -->
+        <section id="reviews-skeleton" class="reviews-grid" aria-hidden="true">
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-rating shine"></div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-text short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-rating shine"></div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-text short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-rating shine"></div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-text short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= REVIEWS GRID ================= -->
+        <section id="reviews-grid" class="reviews-grid hidden" aria-live="polite" data-loaded="false">
+            <!-- Dynamically generated by review.js -->
+        </section>
+
+        <!-- ================= EMPTY STATE ================= -->
+        <section id="reviews-empty" class="empty-state glass-panel hidden" aria-live="polite">
+            <div class="empty-icon-wrap">
+                <i class="fas fa-comment"></i>
+            </div>
+            <h2>No Reviews Found</h2>
+            <p>There are no customer reviews available.</p>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="main-footer glass-panel">
+        <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved. Premium Admin Panel.</p>
+    </footer>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- ===== PREVIEW REVIEW MODAL ===== -->
+    <div id="modal-preview" class="modal-overlay preview-lightbox hidden" role="dialog" aria-modal="true" aria-label="Review Preview">
+        <button class="lightbox-close" aria-label="Close preview" data-close>&times;</button>
+        <div class="modal-container glass-panel preview-container">
+            <div class="preview-layout">
+                <div class="preview-details">
+                    <h3 id="preview-review-name" class="preview-name">Customer Name</h3>
+                    <div id="preview-review-rating" class="preview-rating">
+                        <i class="fas fa-star gold-text"></i>
+                        <i class="fas fa-star gold-text"></i>
+                        <i class="fas fa-star gold-text"></i>
+                        <i class="fas fa-star gold-text"></i>
+                        <i class="fas fa-star gold-text"></i>
+                    </div>
+                    <p id="preview-review-text" class="preview-review-text">Review content goes here.</p>
+                    <p class="preview-meta">
+                        <span id="preview-review-status" class="preview-badge status-badge">Pending</span>
+                        <span id="preview-review-date" class="preview-date"><i class="fas fa-calendar-alt"></i> Date</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== APPROVE CONFIRMATION MODAL ===== -->
+    <div id="modal-approve" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="approve-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="approve-icon-wrap">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 id="approve-modal-title" class="modal-title">Approve <span class="gold-text">Review</span></h2>
+            <p class="modal-confirm-msg">Are you sure you want to approve this review?</p>
+            <p class="modal-confirm-msg-sub">Approved reviews will become visible on the website.</p>
+
+            <input type="hidden" id="approve-review-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-approve" class="btn btn-gold">Approve</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== REJECT CONFIRMATION MODAL ===== -->
+    <div id="modal-reject" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="reject-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="reject-icon-wrap">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <h2 id="reject-modal-title" class="modal-title">Reject <span class="text-danger">Review</span></h2>
+            <p class="modal-confirm-msg">Are you sure you want to reject this review?</p>
+            <p class="modal-confirm-msg-sub">Rejected reviews will not appear on the website.</p>
+
+            <input type="hidden" id="reject-review-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-reject" class="btn btn-danger">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+    <div id="modal-delete" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="delete-icon-wrap">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 id="delete-modal-title" class="modal-title">Confirm <span class="text-danger">Removal</span></h2>
+            <p class="modal-confirm-msg">Delete <strong id="delete-review-name" class="gold-text">this review</strong> permanently?</p>
+            <p class="modal-confirm-msg-sub">This action cannot be undone.</p>
+
+            <input type="hidden" id="delete-review-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-delete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST CONTAINER ================= -->
+    <div id="toast-container" class="toast-container" role="status" aria-live="polite">
+        <!-- Toast items injected dynamically -->
+    </div>
+</body>
+</html>

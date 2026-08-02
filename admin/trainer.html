@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trainer Management | BM Fitness World CMS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/trainer.css" />
+    <!-- Main Script Module -->
+    <script type="module" src="../js/trainer.js" defer></script>
+</head>
+<body class="bg-dark text-light">
+    <!-- ================= HEADER ================= -->
+    <header class="main-header glass-panel">
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">THE BM FITNESS WORLD <span class="gold-text">V2</span></span>
+            </div>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="../admin.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="trainer.html" class="nav-link active" aria-current="page"><i class="fas fa-dumbbell"></i> Trainer</a>
+            </nav>
+            <div class="user-profile">
+                <span id="user-display-name" class="user-name">Administrator</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN WORKSPACE ================= -->
+    <main class="workspace-container">
+        <!-- Breadcrumb & Header Actions -->
+        <section class="section-header">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../admin.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Trainer</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Trainer <span class="gold-text">Management</span></h1>
+            </div>
+            <div class="header-actions">
+                <button id="btn-add-trainer" class="btn btn-gold" aria-haspopup="dialog" aria-controls="modal-add-trainer">
+                    <i class="fas fa-user-plus"></i> Add Trainer
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SEARCH & FILTER TOOLBAR ================= -->
+        <section class="toolbar-section glass-panel" aria-label="Search and Filter Controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input type="search" id="search-input" placeholder="Search trainer by name, designation, or bio..." aria-label="Search trainer" />
+            </div>
+            <div class="filters-group">
+                <div class="filter-item">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status" class="custom-select">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="filter-sort">Sort</label>
+                    <select id="filter-sort" class="custom-select">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LOADING SKELETON ================= -->
+        <section id="trainer-skeleton" class="trainer-grid" aria-hidden="true">
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TRAINER GRID ================= -->
+        <section id="trainer-grid" class="trainer-grid hidden" aria-live="polite" data-loaded="false">
+            <!-- Dynamically generated by trainer.js -->
+        </section>
+
+        <!-- ================= EMPTY STATE ================= -->
+        <section id="trainer-empty" class="empty-state glass-panel hidden" aria-live="polite">
+            <div class="empty-icon-wrap">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2>No Trainers Found</h2>
+            <p>Your search or filters returned no results, or you haven't added any trainers yet.</p>
+            <button id="btn-empty-add" class="btn btn-gold"><i class="fas fa-user-plus"></i> Add First Trainer</button>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="main-footer glass-panel">
+        <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved. Designed for premium operations.</p>
+    </footer>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- ===== ADD TRAINER MODAL ===== -->
+    <div id="modal-add-trainer" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+        <div class="modal-container glass-panel">
+            <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+            <h2 id="add-modal-title" class="modal-title">Add <span class="gold-text">Trainer</span></h2>
+
+            <form id="trainer-form" novalidate>
+                <!-- Hidden file input -->
+                <input type="file" id="trainer-file-input" class="hidden" accept="image/*" />
+
+                <!-- Drag & Drop Area -->
+                <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Upload trainer photo. Press Enter to browse.">
+                    <div class="drop-zone-content">
+                        <i class="fas fa-cloud-upload-alt drop-icon"></i>
+                        <p class="drop-text-primary">Drag &amp; drop a photo here or <span class="gold-text">browse files</span></p>
+                        <p class="drop-text-secondary">Supported: JPG, PNG, WEBP, GIF (Max 10MB)</p>
+                    </div>
+                </div>
+
+                <!-- Photo Preview -->
+                <div id="trainer-preview-container" class="upload-preview-container hidden">
+                    <div class="preview-item">
+                        <div id="trainer-preview-wrapper">
+                            <img id="trainer-preview-image" src="#" alt="Trainer photo preview" />
+                        </div>
+                        <div class="file-details">
+                            <span id="preview-file-name" class="file-name">photo.jpg</span>
+                            <span id="preview-file-size" class="file-size">0.0 MB</span>
+                        </div>
+                        <button type="button" id="btn-remove-preview" class="btn-remove-preview" aria-label="Remove photo">&times;</button>
+                    </div>
+                </div>
+
+                <!-- Form Fields -->
+                <div class="input-group">
+                    <label for="trainer-name" class="field-label">Trainer Name</label>
+                    <input type="text" id="trainer-name" class="form-input" placeholder="e.g. John Doe" required maxlength="100" />
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-designation" class="field-label">Designation</label>
+                    <input type="text" id="trainer-designation" class="form-input" placeholder="e.g. Head Personal Trainer" required maxlength="100" />
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-experience" class="field-label">Experience (years)</label>
+                    <input type="number" id="trainer-experience" class="form-input" placeholder="e.g. 8" min="0" max="60" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-status" class="field-label">Status</label>
+                    <select id="trainer-status" class="form-select" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-bio" class="field-label">Short Bio</label>
+                    <textarea id="trainer-bio" class="form-textarea" placeholder="Brief introduction about the trainer..." maxlength="300" rows="3"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-facebook" class="field-label">Facebook URL</label>
+                    <input type="url" id="trainer-facebook" class="form-input" placeholder="https://facebook.com/username" />
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-instagram" class="field-label">Instagram URL</label>
+                    <input type="url" id="trainer-instagram" class="form-input" placeholder="https://instagram.com/username" />
+                </div>
+
+                <div class="input-group">
+                    <label for="trainer-whatsapp" class="field-label">WhatsApp URL</label>
+                    <input type="url" id="trainer-whatsapp" class="form-input" placeholder="https://wa.me/1234567890" />
+                </div>
+
+                <!-- Upload Progress -->
+                <div id="upload-progress-container" class="progress-bar-container hidden" aria-live="polite">
+                    <div class="progress-info">
+                        <span class="progress-label"><i class="fas fa-spinner fa-spin"></i> Uploading...</span>
+                        <span id="upload-progress-percent" class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="upload-progress-bar" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" id="btn-submit-trainer" class="btn btn-gold" disabled>Save Trainer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== EDIT TRAINER MODAL ===== -->
+    <div id="modal-edit-trainer" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+        <div class="modal-container glass-panel">
+            <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+            <h2 id="edit-modal-title" class="modal-title">Edit <span class="gold-text">Trainer</span></h2>
+
+            <form id="edit-trainer-form" novalidate>
+                <input type="hidden" id="edit-trainer-id" />
+
+                <!-- Existing Image Preview -->
+                <div class="edit-thumbnail-container">
+                    <img id="edit-preview-image" class="edit-preview-thumbnail" src="#" alt="Trainer photo preview" />
+                </div>
+
+                <!-- Hidden file input for edit -->
+                <input type="file" id="edit-trainer-file-input" class="hidden" accept="image/*" />
+
+                <!-- Edit Drag & Drop (optional re-upload) -->
+                <div id="edit-drop-zone" class="drop-zone drop-zone-small" tabindex="0" role="button" aria-label="Change trainer photo. Press Enter to browse.">
+                    <div class="drop-zone-content">
+                        <i class="fas fa-camera drop-icon"></i>
+                        <p class="drop-text-primary">Change photo <span class="gold-text">(optional)</span></p>
+                    </div>
+                </div>
+
+                <div id="edit-preview-container" class="upload-preview-container hidden">
+                    <div class="preview-item">
+                        <div id="edit-preview-wrapper">
+                            <img id="edit-new-preview-image" src="#" alt="New trainer photo preview" />
+                        </div>
+                        <div class="file-details">
+                            <span id="edit-preview-file-name" class="file-name">photo.jpg</span>
+                            <span id="edit-preview-file-size" class="file-size">0.0 MB</span>
+                        </div>
+                        <button type="button" id="btn-edit-remove-preview" class="btn-remove-preview" aria-label="Remove new photo">&times;</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-name" class="field-label">Trainer Name</label>
+                    <input type="text" id="edit-trainer-name" class="form-input" required maxlength="100" />
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-designation" class="field-label">Designation</label>
+                    <input type="text" id="edit-trainer-designation" class="form-input" required maxlength="100" />
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-experience" class="field-label">Experience (years)</label>
+                    <input type="number" id="edit-trainer-experience" class="form-input" min="0" max="60" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-status" class="field-label">Status</label>
+                    <select id="edit-trainer-status" class="form-select" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-bio" class="field-label">Short Bio</label>
+                    <textarea id="edit-trainer-bio" class="form-textarea" maxlength="300" rows="3"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-facebook" class="field-label">Facebook URL</label>
+                    <input type="url" id="edit-trainer-facebook" class="form-input" placeholder="https://facebook.com/username" />
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-instagram" class="field-label">Instagram URL</label>
+                    <input type="url" id="edit-trainer-instagram" class="form-input" placeholder="https://instagram.com/username" />
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-trainer-whatsapp" class="field-label">WhatsApp URL</label>
+                    <input type="url" id="edit-trainer-whatsapp" class="form-input" placeholder="https://wa.me/1234567890" />
+                </div>
+
+                <!-- Edit Upload Progress -->
+                <div id="edit-upload-progress-container" class="progress-bar-container hidden" aria-live="polite">
+                    <div class="progress-info">
+                        <span class="progress-label"><i class="fas fa-spinner fa-spin"></i> Uploading...</span>
+                        <span id="edit-upload-progress-percent" class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="edit-upload-progress-bar" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" id="btn-submit-edit" class="btn btn-gold">Update Trainer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+    <div id="modal-delete" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="delete-icon-wrap">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 id="delete-modal-title" class="modal-title">Confirm <span class="text-danger">Removal</span></h2>
+            <p class="modal-confirm-msg">
+                Are you sure you want to permanently delete
+                <strong id="delete-trainer-name" class="gold-text">this trainer</strong>
+                from the CMS?
+            </p>
+            <p class="modal-confirm-msg-sub">This action cannot be undone. All associated data will be removed.</p>
+
+            <input type="hidden" id="delete-trainer-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-delete" class="btn btn-danger">Confirm Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PREVIEW MODAL ===== -->
+        <div id="modal-preview" class="modal-overlay preview-lightbox hidden" role="dialog" aria-modal="true" aria-label="Trainer Preview">
+        <button class="lightbox-close" aria-label="Close preview" data-close>&times;</button>
+        <div class="modal-container glass-panel preview-container">
+            <div class="preview-layout">
+                <div class="preview-image-wrapper">
+                    <img id="preview-trainer-photo" src="#" alt="Trainer photo" />
+                </div>
+                <div class="preview-details">
+                    <span id="preview-trainer-status" class="preview-badge">Active</span>
+                    <h3 id="preview-trainer-name" class="preview-name">Trainer Name</h3>
+                    <p id="preview-trainer-designation" class="preview-designation">Designation</p>
+                    <p id="preview-trainer-experience" class="preview-experience"><i class="fas fa-clock"></i> <span>0</span> years experience</p>
+                    <p id="preview-trainer-bio" class="preview-bio">Short bio appears here.</p>
+                    <div class="preview-social">
+                        <a id="preview-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a id="preview-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a id="preview-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST CONTAINER ================= -->
+    <div id="toast-container" class="toast-container" role="status" aria-live="polite">
+        <!-- Toast items injected dynamically -->
+    </div>
+</body>
+</html>

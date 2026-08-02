@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membership Plans | BM Fitness World CMS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="../css/membership.css" />
+    <!-- Main Script Module -->
+    <script type="module" src="../js/membership.js" defer></script>
+</head>
+<body class="bg-dark text-light">
+    <!-- ================= HEADER ================= -->
+    <header class="main-header glass-panel">
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD <span class="gold-text">V2</span></span>
+            </div>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="../admin.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="membership.html" class="nav-link active" aria-current="page"><i class="fas fa-crown"></i> Membership Plans</a>
+            </nav>
+            <div class="user-profile">
+                <span id="user-display-name" class="user-name">Administrator</span>
+                <a href="../admin.html" class="btn btn-gold-outline btn-sm" aria-label="Back to Dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN WORKSPACE ================= -->
+    <main class="workspace-container">
+        <!-- Breadcrumb & Header Actions -->
+        <section class="section-header">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../admin.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Membership Plans</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Membership <span class="gold-text">Plans</span></h1>
+            </div>
+            <div class="header-actions">
+                <button id="btn-add-plan" class="btn btn-gold" aria-haspopup="dialog" aria-controls="modal-add-plan">
+                    <i class="fas fa-plus-circle"></i> Add Plan
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SEARCH & FILTER TOOLBAR ================= -->
+        <section class="toolbar-section glass-panel" aria-label="Search and Filter Controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input type="search" id="search-input" placeholder="Search by plan name or description..." aria-label="Search plans" />
+            </div>
+            <div class="filters-group">
+                <div class="filter-item">
+                    <label for="filter-type">Plan</label>
+                    <select id="filter-type" class="custom-select">
+                        <option value="all">All Plans</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status" class="custom-select">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="filter-sort">Sort</label>
+                    <select id="filter-sort" class="custom-select">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LOADING SKELETON ================= -->
+        <section id="plans-skeleton" class="plans-grid" aria-hidden="true">
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-badge shine"></div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                </div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-badge shine"></div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                </div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-badge shine"></div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                    <div class="skeleton-price shine"></div>
+                </div>
+                <div class="skeleton-text shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PLANS GRID ================= -->
+        <section id="plans-grid" class="plans-grid hidden" aria-live="polite" data-loaded="false">
+            <!-- Dynamically generated by membership.js -->
+        </section>
+
+        <!-- ================= EMPTY STATE ================= -->
+        <section id="plans-empty" class="empty-state glass-panel hidden" aria-live="polite">
+            <div class="empty-icon-wrap">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h2>No Membership Plans Found</h2>
+            <p>Create your first membership plan to get started.</p>
+            <button id="btn-empty-add" class="btn btn-gold"><i class="fas fa-plus-circle"></i> Add Plan</button>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="main-footer glass-panel">
+        <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved. Designed for premium operations.</p>
+    </footer>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- ===== ADD PLAN MODAL ===== -->
+    <div id="modal-add-plan" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+        <div class="modal-container glass-panel">
+            <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+            <h2 id="add-modal-title" class="modal-title">Add <span class="gold-text">Membership Plan</span></h2>
+
+            <form id="plan-form" novalidate>
+                <div class="input-group">
+                    <label for="plan-type" class="field-label">Plan Type <span class="required">*</span></label>
+                    <select id="plan-type" class="form-select" required>
+                        <option value="">Select plan type</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="plan-description" class="field-label">Description</label>
+                    <textarea id="plan-description" class="form-textarea" placeholder="Describe the benefits and features of this plan..." maxlength="500" rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="plan-1month" class="field-label">1 Month Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="plan-1month" class="form-input" placeholder="0" min="0" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="plan-3month" class="field-label">3 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="plan-3month" class="form-input" placeholder="0" min="0" step="0.01" required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="plan-6month" class="field-label">6 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="plan-6month" class="form-input" placeholder="0" min="0" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="plan-12month" class="field-label">12 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="plan-12month" class="form-input" placeholder="0" min="0" step="0.01" required />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="plan-status" class="field-label">Status <span class="required">*</span></label>
+                    <select id="plan-status" class="form-select" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" id="btn-submit-add" class="btn btn-gold">Save Plan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== EDIT PLAN MODAL ===== -->
+    <div id="modal-edit-plan" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+        <div class="modal-container glass-panel">
+            <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+            <h2 id="edit-modal-title" class="modal-title">Edit <span class="gold-text">Membership Plan</span></h2>
+
+            <form id="edit-plan-form" novalidate>
+                <input type="hidden" id="edit-plan-id" />
+
+                <div class="input-group">
+                    <label for="edit-plan-type" class="field-label">Plan Type <span class="required">*</span></label>
+                    <select id="edit-plan-type" class="form-select" required>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-plan-description" class="field-label">Description</label>
+                    <textarea id="edit-plan-description" class="form-textarea" maxlength="500" rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="edit-plan-1month" class="field-label">1 Month Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="edit-plan-1month" class="form-input" min="0" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-plan-3month" class="field-label">3 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="edit-plan-3month" class="form-input" min="0" step="0.01" required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="edit-plan-6month" class="field-label">6 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="edit-plan-6month" class="form-input" min="0" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-plan-12month" class="field-label">12 Months Price (৳) <span class="required">*</span></label>
+                        <input type="number" id="edit-plan-12month" class="form-input" min="0" step="0.01" required />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="edit-plan-status" class="field-label">Status <span class="required">*</span></label>
+                    <select id="edit-plan-status" class="form-select" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" id="btn-submit-edit" class="btn btn-gold">Update Plan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== PREVIEW PLAN MODAL ===== -->
+    <div id="modal-preview" class="modal-overlay preview-lightbox hidden" role="dialog" aria-modal="true" aria-label="Plan Preview">
+        <button class="lightbox-close" aria-label="Close preview" data-close>&times;</button>
+        <div class="modal-container glass-panel preview-container">
+            <div class="preview-layout">
+                <div class="preview-header">
+                    <span id="preview-plan-badge" class="preview-badge gold-badge">Silver</span>
+                    <span id="preview-plan-status" class="preview-badge status-badge">Active</span>
+                </div>
+                <h3 id="preview-plan-name" class="preview-name">Membership Plan</h3>
+                <div class="preview-prices">
+                    <div class="preview-price-item">
+                        <span class="price-label">1 Month</span>
+                        <span id="preview-1month" class="price-value">৳0</span>
+                    </div>
+                    <div class="preview-price-item">
+                        <span class="price-label">3 Months</span>
+                        <span id="preview-3month" class="price-value">৳0</span>
+                    </div>
+                    <div class="preview-price-item">
+                        <span class="price-label">6 Months</span>
+                        <span id="preview-6month" class="price-value">৳0</span>
+                    </div>
+                    <div class="preview-price-item">
+                        <span class="price-label">12 Months</span>
+                        <span id="preview-12month" class="price-value">৳0</span>
+                    </div>
+                </div>
+                <p id="preview-description" class="preview-description">Plan description goes here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+    <div id="modal-delete" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="delete-icon-wrap">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 id="delete-modal-title" class="modal-title">Confirm <span class="text-danger">Removal</span></h2>
+            <p class="modal-confirm-msg">Are you sure you want to permanently delete <strong id="delete-plan-name" class="gold-text">this plan</strong>?</p>
+            <p class="modal-confirm-msg-sub">This action cannot be undone.</p>
+
+            <input type="hidden" id="delete-plan-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-delete" class="btn btn-danger">Delete Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST CONTAINER ================= -->
+    <div id="toast-container" class="toast-container" role="status" aria-live="polite">
+        <!-- Toast items injected dynamically -->
+    </div>
+</body>
+</html>
