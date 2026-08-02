@@ -702,7 +702,7 @@ async function handleEditSubmit(e) {
 // DELETE LOGIC
 // ==========================================
 function openDeleteModal(item) {
-    currentDeleteId = item.id;
+    currentDeleteId = item;
     currentDeletePublicId = item.publicId;
     currentDeleteResourceType = item.resourceType || (item.type === 'video' ? 'video' : 'image');
 
