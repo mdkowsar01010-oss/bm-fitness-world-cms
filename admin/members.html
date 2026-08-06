@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Members Management | BM Fitness World CMS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Admin Base Styles -->
+    <link rel="stylesheet" href="../css/admin.css" />
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="../css/members.css" />
+    <!-- Main Script Module -->
+    <script type="module" src="../js/members.js"></script>
+</head>
+<body class="bg-dark text-light">
+
+    <!-- ============================================================
+    TOP HEADER
+    ============================================================ -->
+    <header class="main-header glass-panel">
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD <span class="gold-text">V2</span></span>
+            </div>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="../admin.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="members.html" class="nav-link active" aria-current="page"><i class="fas fa-users"></i> Members</a>
+                <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> Gallery</a>
+                <a href="trainer.html" class="nav-link"><i class="fas fa-dumbbell"></i> Trainers</a>
+                <a href="review.html" class="nav-link"><i class="fas fa-star"></i> Reviews</a>
+            </nav>
+            <div class="user-profile">
+                <span id="user-display-name" class="user-name">Administrator</span>
+                <button id="btn-logout" class="btn-logout" aria-label="Logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MAIN WORKSPACE
+    ============================================================ -->
+    <main class="workspace-container">
+
+        <!-- Breadcrumb & Page Title -->
+        <section class="section-header">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../admin.html">Admin</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Members</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Members <span class="gold-text">Management</span></h1>
+                <p class="page-subtitle">Manage all gym members from one place.</p>
+            </div>
+            <div class="header-actions">
+                <button id="btn-add-member" class="btn btn-gold" aria-haspopup="dialog" aria-controls="modal-member">
+                    <i class="fas fa-user-plus"></i> Add Member
+                </button>
+            </div>
+        </section>
+
+        <!-- Toolbar -->
+        <section class="toolbar-section glass-panel" aria-label="Search and Filter Controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input type="search" id="search-input" placeholder="Search by member name..." aria-label="Search members" />
+            </div>
+            <div class="filters-group">
+                <div class="filter-item">
+                    <label for="filter-plan">Plan</label>
+                    <select id="filter-plan" class="custom-select">
+                        <option value="all">All Plans</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Skeleton -->
+        <section id="members-skeleton" class="members-grid" aria-hidden="true">
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-avatar shine"></div>
+                <div class="skeleton-text header shine"></div>
+                <div class="skeleton-text sub shine"></div>
+                <div class="skeleton-text sub short shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Members Grid -->
+        <section id="members-grid" class="members-grid hidden" aria-live="polite" data-loaded="false">
+            <!-- Dynamically generated by members.js -->
+        </section>
+
+        <!-- Empty State -->
+        <section id="members-empty" class="empty-state glass-panel hidden" aria-live="polite">
+            <div class="empty-icon-wrap">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2>No Members Found</h2>
+            <p>Start by adding your first member to the system.</p>
+            <button id="btn-empty-add" class="btn btn-gold"><i class="fas fa-user-plus"></i> Add Member</button>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="main-footer glass-panel">
+        <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved. Designed for premium operations.</p>
+    </footer>
+
+    <!-- ============================================================
+    MODALS
+    ============================================================ -->
+
+    <!-- ===== ADD / EDIT MEMBER MODAL ===== -->
+    <div id="modal-member" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-member-title">
+        <div class="modal-container glass-panel">
+            <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+            <h2 id="modal-member-title" class="modal-title">Add <span class="gold-text">Member</span></h2>
+
+            <form id="member-form" novalidate>
+                <input type="hidden" id="member-id" />
+
+                <div class="input-group">
+                    <label for="member-name" class="field-label">Member Name <span class="required">*</span></label>
+                    <input type="text" id="member-name" class="form-input" placeholder="Full name" required maxlength="100" />
+                </div>
+
+                <div class="input-group">
+                    <label for="member-plan" class="field-label">Plan <span class="required">*</span></label>
+                    <select id="member-plan" class="form-select" required>
+                        <option value="">Select plan</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="member-price" class="field-label">Price ($) <span class="required">*</span></label>
+                    <input type="number" id="member-price" class="form-input" placeholder="0.00" min="0" step="0.01" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="member-duration" class="field-label">Duration <span class="required">*</span></label>
+                    <select id="member-duration" class="form-select" required>
+                        <option value="">Select duration</option>
+                        <option value="1 Month">1 Month</option>
+                        <option value="3 Months">3 Months</option>
+                        <option value="6 Months">6 Months</option>
+                        <option value="12 Months">12 Months</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="submit" id="btn-submit-member" class="btn btn-gold">Save Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+    <div id="modal-delete" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal-container glass-panel modal-confirm-width">
+            <div class="delete-icon-wrap">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 id="delete-modal-title" class="modal-title">Confirm <span class="text-danger">Removal</span></h2>
+            <p class="modal-confirm-msg">Are you sure you want to permanently delete <strong id="delete-member-name" class="gold-text">this member</strong>?</p>
+            <p class="modal-confirm-msg-sub">This action cannot be undone.</p>
+
+            <input type="hidden" id="delete-member-id" />
+
+            <div class="modal-actions stack-mobile">
+                <button type="button" class="btn btn-outline" data-close>Cancel</button>
+                <button type="button" id="btn-confirm-delete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    TOAST CONTAINER
+    ============================================================ -->
+    <div id="toast-container" class="toast-container" role="status" aria-live="polite">
+        <!-- Toast items injected dynamically -->
+    </div>
+
+</body>
+</html>
