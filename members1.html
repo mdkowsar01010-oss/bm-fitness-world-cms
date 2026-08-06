@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Members | The BM Fitness World</title>
+    <meta name="description" content="Meet our growing fitness family at The BM Fitness World. See our members and their membership plans." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/members1.css" />
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="main-header" role="banner" aria-label="Site header">
+        <div class="header-container">
+            <a href="index.html" class="brand-link" aria-label="The BM Fitness World home">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="slideMenu">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    THREE-DOT SLIDE MENU
+    ============================================================ -->
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    <nav class="slide-menu" id="slideMenu" role="navigation" aria-label="Main navigation" aria-hidden="true">
+        <div class="slide-menu-inner">
+            <button class="menu-close" id="menuClose" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="menu-brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD</span>
+            </div>
+            <ul class="menu-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="membership1.html">Membership</a></li>
+                <li><a href="trainer1.html">Trainer</a></li>
+                <li><a href="members1.html" class="active" aria-current="page">Members</a></li>
+                <li><a href="join1.html">Join Now</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+            </ul>
+            <div class="menu-social">
+                <a href="https://www.facebook.com/thebmfitnessworld" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/8801864858208" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="members-hero" aria-label="Members hero banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle fade-up">OUR COMMUNITY</span>
+            <h1 class="hero-title fade-up">Our <span class="gold-text">Members</span></h1>
+            <p class="hero-desc fade-up">Meet our growing fitness family. Real people, real transformations, real results.</p>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    MEMBERS SECTION
+    ============================================================ -->
+    <section class="members-section" id="members" aria-labelledby="members-title">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-tag">OUR FAMILY</span>
+                <h2 id="members-title" class="section-title">Meet Our <span class="gold-text">Members</span></h2>
+                <p class="section-desc">Discover the diverse community that makes The BM Fitness World a place of inspiration and growth.</p>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="members-toolbar fade-up">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    <input type="search" id="search-input" placeholder="Search members by name..." aria-label="Search members" />
+                </div>
+                <div class="filter-item">
+                    <label for="filter-plan">Plan</label>
+                    <select id="filter-plan" class="custom-select">
+                        <option value="all">All Plans</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Elite">Elite</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div id="members-skeleton" class="members-grid" aria-hidden="true">
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-avatar shine"></div>
+                    <div class="skeleton-text header shine"></div>
+                    <div class="skeleton-text sub shine"></div>
+                    <div class="skeleton-text sub short shine"></div>
+                </div>
+            </div>
+
+            <!-- Members Grid -->
+            <div id="members-grid" class="members-grid hidden" aria-live="polite" data-loaded="false">
+                <!-- Dynamically generated by members1.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="members-empty" class="empty-state hidden" aria-live="polite">
+                <div class="empty-icon-wrap">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>No Members Found</h2>
+                <p>Be the first to join our growing fitness family!</p>
+                <a href="join1.html" class="btn btn-gold">Join Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
+    <section class="cta-section" aria-labelledby="cta-title">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content fade-up">
+                <span class="section-tag">START YOUR JOURNEY</span>
+                <h2 id="cta-title" class="section-title">Ready to Join <span class="gold-text">Our Family</span>?</h2>
+                <p class="section-desc">Become part of The BM Fitness World community and start your transformation today.</p>
+                <div class="cta-buttons">
+                    <a href="join1.html" class="btn btn-gold">Join Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="membership1.html" class="btn btn-outline">View Plans <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="brand-sub">THE BM</span>
+                    <span class="brand-main">FITNESS WORLD</span>
+                    <p>Elevate your fitness journey with premium luxury, expert training, and a community that inspires greatness.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/thebmfitnessworld" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/8801864858208" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership1.html">Membership</a></li>
+                        <li><a href="trainer1.html">Trainers</a></li>
+                        <li><a href="members1.html">Members</a></li>
+                        <li><a href="join1.html">Join Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span class="gold-text">The BM Fitness World</span>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script type="module" src="js/script.js"></script>
+<script type="module" src="js/members1.js"></script>
+
+</body>
+</html>
