@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earnings Management | BM Fitness World CMS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Admin Base Styles -->
+    <link rel="stylesheet" href="../css/admin.css" />
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="../css/earnings.css" />
+</head>
+<body class="bg-dark text-light">
+
+    <!-- ============================================================
+    TOP HEADER
+    ============================================================ -->
+    <header class="main-header glass-panel">
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-sub">THE BM</span>
+                <span class="brand-main">FITNESS WORLD <span class="gold-text">V2</span></span>
+            </div>
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="../admin.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> Gallery</a>
+                <a href="trainer.html" class="nav-link"><i class="fas fa-dumbbell"></i> Trainers</a>
+                <a href="membership.html" class="nav-link"><i class="fas fa-crown"></i> Membership</a>
+                <a href="members.html" class="nav-link"><i class="fas fa-users"></i> Members</a>
+                <a href="review.html" class="nav-link"><i class="fas fa-star"></i> Reviews</a>
+                <a href="earnings.html" class="nav-link active" aria-current="page"><i class="fas fa-coins"></i> Earnings</a>
+            </nav>
+            <div class="user-profile">
+                <span id="user-display-name" class="user-name">Administrator</span>
+                <button id="btn-logout" class="btn-logout" aria-label="Logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MAIN WORKSPACE
+    ============================================================ -->
+    <main class="workspace-container">
+
+        <!-- Breadcrumb & Page Header -->
+        <section class="section-header">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../admin.html">Admin</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Earnings</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">Earnings <span class="gold-text">Management</span></h1>
+                <p class="page-subtitle">Manage yearly earnings records from one place.</p>
+            </div>
+            <div class="header-actions">
+                <a href="../admin.html" id="btn-back-dashboard" class="btn btn-gold-outline btn-sm" aria-label="Back to Dashboard">
+                    <i class="fas fa-arrow-left"></i> Back Dashboard
+                </a>
+                <button id="btn-add-table" class="btn btn-gold" aria-label="Add new yearly earnings table">
+                    <i class="fas fa-plus-circle"></i> Add Table
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        EARNINGS CONTAINER (JavaScript will populate this)
+        ============================================================ -->
+        <section id="earnings-container" class="earnings-container" aria-live="polite" aria-label="Earnings tables">
+            <!-- All earnings tables will be inserted here dynamically -->
+        </section>
+
+        <!-- ============================================================
+        LOADING SKELETON
+        ============================================================ -->
+        <section id="earnings-skeleton" class="earnings-skeleton" aria-hidden="true">
+            <!-- Skeleton Card 1 -->
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-table shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+            <!-- Skeleton Card 2 -->
+            <div class="skeleton-card glass-panel">
+                <div class="skeleton-header shine"></div>
+                <div class="skeleton-table shine"></div>
+                <div class="skeleton-buttons">
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                    <div class="skeleton-btn shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        EMPTY STATE
+        ============================================================ -->
+        <section id="earnings-empty" class="empty-state glass-panel hidden" aria-live="polite">
+            <div class="empty-icon-wrap">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h2>No Earnings Records Found</h2>
+            <p>Create your first yearly earnings table.</p>
+            <button id="btn-empty-add" class="btn btn-gold"><i class="fas fa-plus-circle"></i> Add Table</button>
+        </section>
+
+        <!-- ============================================================
+        EARNINGS TABLE TEMPLATE (JavaScript clones this)
+        ============================================================ -->
+        <template id="earnings-table-template">
+            <div class="earnings-card glass-panel" data-year="">
+                <!-- Card Header -->
+                <div class="earnings-card-header">
+                    <div class="year-label">
+                        <span>Year:</span>
+                        <input type="text" class="earning-year" value="" placeholder="2027" maxlength="4" disabled aria-label="Edit year" />
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-gold-outline btn-sm btn-edit-table" aria-label="Edit this table">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-gold btn-sm btn-save-table" aria-label="Save changes" disabled>
+                            <i class="fas fa-save"></i> Save
+                        </button>
+                        <button class="btn btn-danger btn-sm btn-delete-table" aria-label="Delete this table">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Earnings Table -->
+                <div class="earnings-table-wrap">
+                    <table class="earnings-table" aria-label="Monthly earnings">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Per Month Earnings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>January</td>
+                                <td><input type="text" class="month-input" data-month="january" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>February</td>
+                                <td><input type="text" class="month-input" data-month="february" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>March</td>
+                                <td><input type="text" class="month-input" data-month="march" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>April</td>
+                                <td><input type="text" class="month-input" data-month="april" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>May</td>
+                                <td><input type="text" class="month-input" data-month="may" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>June</td>
+                                <td><input type="text" class="month-input" data-month="june" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>July</td>
+                                <td><input type="text" class="month-input" data-month="july" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>August</td>
+                                <td><input type="text" class="month-input" data-month="august" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>September</td>
+                                <td><input type="text" class="month-input" data-month="september" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>October</td>
+                                <td><input type="text" class="month-input" data-month="october" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>November</td>
+                                <td><input type="text" class="month-input" data-month="november" placeholder="0" disabled /></td>
+                            </tr>
+                            <tr>
+                                <td>December</td>
+                                <td><input type="text" class="month-input" data-month="december" placeholder="0" disabled /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <!-- ============================================================
+        DELETE CONFIRMATION MODAL
+        ============================================================ -->
+        <div id="modal-delete" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+            <div class="modal-container glass-panel modal-confirm-width">
+                <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+                <div class="delete-icon-wrap">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2 id="delete-modal-title" class="modal-title">Delete <span class="text-danger">Earnings Table</span></h2>
+                <p class="modal-confirm-msg">Are you sure you want to permanently delete <strong id="delete-table-year" class="gold-text">this table</strong>?</p>
+                <p class="modal-confirm-msg-sub">This action cannot be undone.</p>
+
+                <input type="hidden" id="delete-table-id" />
+
+                <div class="modal-actions stack-mobile">
+                    <button type="button" id="btn-cancel-delete" class="btn btn-outline" data-close>Cancel</button>
+                    <button type="button" id="btn-confirm-delete" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        TOAST CONTAINER
+        ============================================================ -->
+        <div id="toast-container" class="toast-container" role="status" aria-live="polite">
+            <!-- Toast items injected dynamically -->
+        </div>
+
+    </main>
+    
+    <script type="module" src="../js/earnings.js"></script>
+
+</body>
+</html>
