@@ -260,7 +260,7 @@ function createMemberCard(member) {
     const joinedDate = formatDate(member.createdAt);
 
     const card = document.createElement('div');
-    card.className = 'member-card fade-up';
+    card.className = 'member-card';
     card.setAttribute('data-member-id', member.id);
 
     // Avatar placeholder (icon)
