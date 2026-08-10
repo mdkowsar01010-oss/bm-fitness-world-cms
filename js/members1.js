@@ -410,7 +410,14 @@ function showError(message) {
 function loadMembers() {
     if (unsubscribe) {
         unsubscribe();
-        unsubscribe = null; 
+        unsubscribe = null;
+    }
+
+    showSkeleton();
+
+    const membersRef = collection(db, 'members');
+
+unsubscribe = onSnapshot(membersRef, (snapshot) => {
         allMembers = [];
         snapshot.forEach((doc) => {
             const data = doc.data();
@@ -421,6 +428,7 @@ function loadMembers() {
                 ...data
             });
         });
+
 
         // Apply filters (which will render)
         applyFilters();
