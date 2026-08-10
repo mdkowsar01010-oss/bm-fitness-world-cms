@@ -410,15 +410,7 @@ function showError(message) {
 function loadMembers() {
     if (unsubscribe) {
         unsubscribe();
-        unsubscribe = null;
-    }
-
-    showSkeleton();
-
-    const membersRef = collection(db, 'members');
-    const q = query(membersRef, orderBy('createdAt', 'desc'));
-
-    unsubscribe = onSnapshot(q, (snapshot) => {
+        unsubscribe = null; 
         allMembers = [];
         snapshot.forEach((doc) => {
             const data = doc.data();
