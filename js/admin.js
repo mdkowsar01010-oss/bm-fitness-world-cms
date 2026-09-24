@@ -214,12 +214,18 @@ function setupNavigation() {
     // Add active based on current URL hash or click
     links.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Prevent default for demo (no actual navigation)
-            e.preventDefault();
+            const href = this.getAttribute('href');
+
+            // Keep placeholder/hash links from jumping, but allow real admin pages to navigate.
+            if (!href || href === '#') {
+                e.preventDefault();
+            }
+
             removeActive();
             addClass(this, 'admin-sidebar__link--active');
             this.setAttribute('aria-current', 'page');
-            // Close sidebar on mobile after click
+
+            // Close sidebar on mobile after click.
             if (!isDesktop && hasClass(document.body, 'sidebar-open')) {
                 closeSidebar();
             }
