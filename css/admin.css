@@ -39,6 +39,8 @@
 html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -64,9 +66,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--black-glass);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(11, 11, 11, 0.97);
     border-bottom: 1px solid var(--glass-border);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     height: var(--header-height);
@@ -182,14 +182,13 @@ body {
 
 /* ----- 6. Collapsible Sidebar (Glass) ----- */
 .admin-sidebar {
+    -webkit-overflow-scrolling: touch;
     position: sticky;
     top: var(--header-height);
     align-self: flex-start;
     width: var(--sidebar-width);
     height: calc(100vh - var(--header-height));
-    background: var(--black-glass);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(11, 11, 11, 0.97);
     border-right: 1px solid var(--glass-border);
     box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
     overflow-y: auto;
@@ -312,10 +311,11 @@ body {
 }
 
 /* ----- 7. Collapsed Sidebar State (applied to body) ----- */
-body.sidebar-collapsed .admin-main{
-    margin-left:0;
+body.sidebar-collapsed .admin-main {
+    margin-left: 0;
 }
- {
+
+body.sidebar-collapsed .admin-sidebar {
     transform: translateX(-100%);
     width: 0;
     overflow: hidden;
@@ -363,9 +363,7 @@ body.sidebar-collapsed .admin-main{
 
 /* ----- 10. Individual Card (Glassmorphism) ----- */
 .admin-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(8px) saturate(180%);
-    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    background: rgba(20, 20, 20, 0.92);
     border: 1px solid var(--card-border);
     border-radius: 1.5rem;
     box-shadow: var(--card-shadow);
@@ -498,9 +496,7 @@ body.sidebar-collapsed .admin-main{
     border-top: 1px solid var(--glass-border);
     color: var(--text-muted);
     font-size: 0.8rem;
-    background: var(--black-glass);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(11, 11, 11, 0.97);
     margin-top: auto;
 }
 
@@ -698,7 +694,8 @@ body.sidebar-open::before {
 
 /* ----- 16. Scrollbar for main (optional) ----- */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
+    height: 5px;
 }
 ::-webkit-scrollbar-track {
     background: #1a1a1a;
@@ -709,4 +706,15 @@ body.sidebar-open::before {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gold-dark);
+}
+
+/* Smooth, stable scrolling without JS scroll hijacking. */
+html, body {
+    overscroll-behavior-y: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
